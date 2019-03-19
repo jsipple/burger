@@ -8,6 +8,13 @@ var connection = mysql.createConnection({
   database: "burgers_db"
 });
 
+connection.connect(err => {
+  if (err) {
+    console.error(`error connecting: ${err.stack}`);
+    return;
+  }
+  console.log(`connected as id ${connection.threadId}`);
+});
 
-
-export default connection
+// Export connection for our ORM to use.
+module.exports = connection;
