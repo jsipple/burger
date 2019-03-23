@@ -12,8 +12,13 @@ router.get('/', (req,res) => {
     })
 })
 
+router.get('/api/burgers', (req,res) => {
+    burger.all( (data) => {
+        res.json(data)
+
+    })})
 router.post('/api/burgers', (req,res) => {
-burger.create(['burger_name'/*, devoured(don't think i need because default is false*/], [req.body.burger_name], result => {
+burger.create(['burger_name'], [req.body.burger_name], result => {
     res.json({ id: result.insertId})
 })
 })

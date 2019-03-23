@@ -1,7 +1,19 @@
-<img src="../../images/burger.gif" alt="">
+<h2>uneaten burgers</h2>
 
-<h1>Eat da burger!</h1>
+<ul>
+  {{#each burgers}}
+   {{#unless devoured}}
+    {{> burger/burger-block devoured=false}}
+   {{/unless}}
+  {{/each}}
+</ul>
 
-<textarea rows="4" cols="40" placeholder="Enter the type of burger you would like to eat"></textarea>
+<h2>eaten burgers</h2>
 
-<button id="submit" class="btn btn-primary" type="submit">Submit</button>
+<ul>
+ {{#each burgers}}
+  {{#if devoured}}
+    {{>burger/eaten devoured=true}}
+   {{/if}}
+ {{/each}}
+</ul>
