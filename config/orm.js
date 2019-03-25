@@ -18,6 +18,7 @@ const objToSql = (ob) => {
         arr.push(key + '=' + value)
       }
   }
+  return arr.toString()
 }
 
 const orm = {
@@ -29,8 +30,10 @@ const orm = {
     })
   },
   insertOne: (table, cols, vals, cb) => {
-    const queryString = `insert into ${table} (${cols.toString()}) 
-    values (${printQuestionMarks(vals.length)})`
+    const queryString = `insert into ${table} (${cols.toString()}) values (${printQuestionMarks(vals.length)})`
+    
+    console.log(vals)
+
 
     connection.query(queryString, vals, (err, result) => {
       if (err) throw err
@@ -38,9 +41,8 @@ const orm = {
     })
   },
   updateOne: (table, objColVals, condition, cb) => {
-    const queryString = `update ${table} set ${objToSql(objColVals)} 
-    where ${condition}`
-
+    const queryString = `update ${table} set ${objToSql(objColVals)} where ${condition}`
+    console.log(queryString)
     connection.query(queryString, (err, result)=> {
       if (err) throw err
       cb(result)

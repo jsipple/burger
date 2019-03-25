@@ -1,23 +1,25 @@
-<h2>uneaten burgers</h2>
+<div class="col-xs-4">
 
+<h2>uneaten burgers</h2>
 <ul>
   {{#each burgers}}
    {{#unless devoured}}
-    {{> burger/burger-block devoured=false}}
+    {{> burger/burger-block}}
    {{/unless}}
   {{/each}}
 </ul>
-
+</div>
+<div class='col-xs-4'>
 <h2>eaten burgers</h2>
 
 <ul>
  {{#each burgers}}
   {{#if devoured}}
-    {{>burger/eaten devoured=true}}
+    {{>burger/eaten}}
    {{/if}}
  {{/each}}
 </ul>
-
+</div>
 <h1>add the burger you would like</h1>
  <form class='create-form'>
   <div class="form-group">

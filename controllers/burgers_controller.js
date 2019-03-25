@@ -30,12 +30,12 @@ router.put('/api/burgers/:id', (req, res) => {
             devoured: true
         },
         condition,
-        (result => {
-            if(result.changedRows === 0) {
+        result => {
+            if (result.changedRows === 0) {
                 return res.status(404).end()
             }
             res.status(200).end()
-        })
+        }
     )
 })
 
